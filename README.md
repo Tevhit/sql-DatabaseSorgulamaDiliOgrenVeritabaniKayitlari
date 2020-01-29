@@ -1,0 +1,2 @@
+# sql-DatabaseSorgulamaDiliOgrenVeritabaniKayitlari
+SQL-Database Sorgulama Dili Veritabanı Kayıtları
