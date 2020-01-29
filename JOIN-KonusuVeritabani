@@ -36,7 +36,7 @@ CREATE TABLE Ogrenciler(
 	OgrenciNumarasi int primary key,
 	OgrenciAdiSoyadi nvarchar(50),
 	Bolumu nvarchar(50),
-	DanismanOgrentmenID nvarchar(50) not null
+	DanismanOgretmenID nvarchar(50) not null
 )
 
 CREATE TABLE Ogretmenler(
