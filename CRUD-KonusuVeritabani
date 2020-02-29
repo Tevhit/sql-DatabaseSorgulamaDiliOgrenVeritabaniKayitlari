@@ -1,1 +1,49 @@
+Adım 1) Yeni bir Database oluşturun.
 
+-----------------------------------------------------------------------------------------------
+
+CREATE DATABASE Urunler
+
+-----------------------------------------------------------------------------------------------
+
+Adım 2) Tabloyu oluşturun.
+
+-----------------------------------------------------------------------------------------------
+
+CREATE TABLE Urunler(
+	UrunKodu int primary key,
+	UrunAdi nvarchar(100),
+	UrunAlisFiyati float,
+	UrunSatisFiyati float,
+	StoktakiUrunSayisi int
+)
+
+-----------------------------------------------------------------------------------------------
+
+Adım 3) Verileri tablolara ekleyin.
+
+-----------------------------------------------------------------------------------------------
+
+insert into Urunler (UrunKodu, UrunAdi, UrunAlisFiyati, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(716490, 'Akyazı Yazı Tahtası Teleskopik Ayaklı 60X85 0017', 103.45, 146.00, 130)
+insert into Urunler (UrunKodu, UrunAdi, UrunAlisFiyati, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(356482, 'Edding Yazı Tahtası Kalemi 360Xl', 9.19, 16.10, 322)
+insert into Urunler (UrunKodu, UrunAdi, UrunAlisFiyati, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(467936, 'Faber Castell Sınav Silgisi 24 Adet Mavi', 23.25, 31.50, 185)
+insert into Urunler (UrunKodu, UrunAdi, UrunAlisFiyati, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(479001, 'Faber-Castell Eğlenceli Keçeli Kalem 20''li', 14.80, 20.90, 139)
+insert into Urunler (UrunKodu, UrunAdi, UrunAlisFiyati, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(368239, 'Noki Büro Klasörü Geniş Mavi', 4.48, 8.48, 452)
+insert into Urunler (UrunKodu, UrunAdi, UrunAlisFiyati, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(531446, 'Poşet Dosya Eco 500''Lü Paket', 22.89, 35.50, 1500)
+insert into Urunler VALUES(121468, 'Pritt 22 Gr.Stıck Yapıştırıcı', 3.30, 6.90, 855)
+insert into Urunler VALUES(920436, 'Pattex Yapıştırıcı Hızlı 2K', NULL, 26.82, 145)
+insert into Urunler (UrunKodu, UrunAdi, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(666486, 'Noki İnce Şeffaf Bant 12mmx33m 12''li Kutu', 40.50, 315)
+insert into Urunler (UrunKodu, UrunAdi, UrunSatisFiyati) VALUES(164700, 'Rotring Okul Seti 0.7 mm Bordo Kalem Silgi Uc', 25.30)
+insert into Urunler (UrunKodu, UrunAdi, UrunAlisFiyati, UrunSatisFiyati, StoktakiUrunSayisi) VALUES(53590, 'Rotring 500 Siyah 0.7 mm Versatil Kalem', 37.23, 46.91, 45)
+
+-----------------------------------------------------------------------------------------------
+
+Adım 4) İstediğiniz tabloyu getirebilirsiniz.
+
+-----------------------------------------------------------------------------------------------
+
+SELECT * FROM Urunler
+
+-----------------------------------------------------------------------------------------------
+
+TEVHİT KARSLI - "SQL YAZILIM OGREN"
