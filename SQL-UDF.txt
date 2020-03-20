@@ -1,0 +1,197 @@
+-- Adım 1) Yeni bir Database oluşturun.
+-----------------------------------------------------------------------------------------------
+
+CREATE DATABASE OtobusSirketiVeritabani
+
+-----------------------------------------------------------------------------------------------
+
+-- Adım 2) Tabloları oluşturun.
+
+-----------------------------------------------------------------------------------------------
+
+GO
+CREATE TABLE Otobusler(
+	Plaka nvarchar(10) PRIMARY KEY,
+	Marka nvarchar(30),
+	Model nvarchar(30),
+	Yasi int,
+	KoltukSayisi int
+)
+GO
+CREATE TABLE CalisilanSehirler(
+	SehirPlakasi int PRIMARY KEY,
+	SehirAdi nvarchar(30),
+	OfisYeri nvarchar(30)
+)
+GO
+CREATE TABLE Seferler(
+	SeferID nvarchar(30),
+	KalkisSehri int,
+	VarisSehri int,
+	OtobusPlakasi nvarchar(10),
+	BirinciKaptan nvarchar(30),
+	IkinciKaptan nvarchar(30),
+	Muavin nvarchar(30),
+	SeferTarihi date
+)
+GO
+CREATE TABLE Calisanlar(
+	CalisanID nvarchar(30) PRIMARY KEY,
+	CalisanTuru int,
+	Adi nvarchar(30),
+	Soyadi nvarchar(30),
+	IseBaslamaYili int,
+	SabitMaasi int,
+	SeferBasiAldigiUcret int
+)
+GO
+CREATE TABLE CalisanTurleri(
+	TurID int PRIMARY KEY,
+	Tur nvarchar(30)
+)
+
+-----------------------------------------------------------------------------------------------
+
+--Adım 3) Verileri tablolara ekleyin.
+
+-----------------------------------------------------------------------------------------------
+
+GO
+INSERT INTO Otobusler VALUES('34 OAB 01', 'Mercedes Benz', 'Travego 17 SHD', 3, 54)
+INSERT INTO Otobusler VALUES('06 OC 57', 'Setra', 'S 417 HDH', 4, 54)
+INSERT INTO Otobusler VALUES('54 OL 34', 'Setra', 'S 431 DT', 5, 78)
+INSERT INTO Otobusler VALUES('34 OTT 248', 'Mercedes Benz', 'Travego 15 SHD', 2, 46)
+INSERT INTO Otobusler VALUES('58 OCV 018', 'Neoplan', 'Tourliner SHD', 7, 46)
+INSERT INTO Otobusler VALUES('61 OL 683', 'Temsa', 'Safir 12', 2, 50)
+INSERT INTO Otobusler VALUES('35 OTZ 601', 'Mercedes Benz', 'Travego 17 SHD', 4, 54)
+INSERT INTO Otobusler VALUES('34 ODA 135', 'Mercedes Benz', 'Tourismo 15 RHD', 3, 46)
+INSERT INTO Otobusler VALUES('34 OBV 699', 'Mercedes Benz', 'Travego 15 SHD', 0, 46)
+GO
+INSERT INTO CalisilanSehirler VALUES (34, 'İstanbul', 'Esenler')
+INSERT INTO CalisilanSehirler VALUES (61, 'Trabzon', 'Ortahisar')
+INSERT INTO CalisilanSehirler VALUES (07, 'Antalya', 'Kepez')
+INSERT INTO CalisilanSehirler VALUES (65, 'Van', 'Tuşba')
+GO
+INSERT INTO Seferler VALUES('IT111201', 34, 61, '34 OAB 01', 'SFR894', 'SFR988', 'MVN311', '2020-01-01')
+INSERT INTO Seferler VALUES('TI112101', 61, 34, '06 OC 57', 'SFR244', 'SFR211', 'MVN555', '2020-01-01')
+INSERT INTO Seferler VALUES('IA111301', 34, 07, '54 OL 34', 'SFR311', 'SFR555', 'MVN503', '2020-01-01')
+INSERT INTO Seferler VALUES('AI113101', 07, 34, '34 OTT 248', 'SFR810', 'SFR299', 'MVN633', '2020-01-01')
+INSERT INTO Seferler VALUES('IV111401', 34, 65, '61 OL 683', 'SFR137', 'SFR493', 'MVN578', '2020-01-01')
+INSERT INTO Seferler VALUES('VI114101', 65, 34, '35 OTZ 601', 'SFR600', 'SFR105', 'MVN699', '2020-01-01')
+INSERT INTO Seferler VALUES('IV111402', 34, 65, '34 OBV 699', 'SFR899', 'SFR931', 'MVN368', '2020-01-01')
+GO
+INSERT INTO Seferler VALUES('IT121201', 34, 61, '34 OTT 248', 'SFR244', 'SFR969', 'MVN633', '2020-01-02')
+INSERT INTO Seferler VALUES('TI122101', 61, 34, '34 OAB 01', 'SFR894', 'SFR988', 'MVN311', '2020-01-02')
+INSERT INTO Seferler VALUES('IA121301', 34, 07, '58 OCV 018', 'SFR105', 'SFR600', 'MVN555', '2020-01-02')
+INSERT INTO Seferler VALUES('AI123101', 07, 34, '54 OL 34', 'SFR311', 'SFR555', 'MVN503', '2020-01-02')
+INSERT INTO Seferler VALUES('IV121401', 34, 65, '06 OC 57', 'SFR810', 'SFR211', 'MVN699', '2020-01-02')
+INSERT INTO Seferler VALUES('VI124101', 65, 34, '61 OL 683', 'SFR493', 'SFR137', 'MVN578', '2020-01-02')
+INSERT INTO Seferler VALUES('VI124102', 65, 34, '34 OBV 699', 'SFR899', 'SFR931', 'MVN368', '2020-01-02')
+GO
+INSERT INTO Seferler VALUES('IT131201', 34, 61, '54 OL 34', 'SFR137', 'SFR299', 'MVN503', '2020-01-03')
+INSERT INTO Seferler VALUES('TI132101', 61, 34, '34 OTT 248', 'SFR969', 'SFR244', 'MVN633', '2020-01-03')
+INSERT INTO Seferler VALUES('IA131301', 34, 07, '61 OL 683', 'SFR988', 'SFR905', 'MVN329', '2020-01-03')
+INSERT INTO Seferler VALUES('AI133101', 07, 34, '58 OCV 018', 'SFR105', 'SFR600', 'MVN555', '2020-01-03')
+INSERT INTO Seferler VALUES('IV131401', 34, 65, '34 OAB 01', 'SFR894', 'SFR311', 'MVN311', '2020-01-03')
+INSERT INTO Seferler VALUES('VI134101', 65, 34, '06 OC 57', 'SFR211', 'SFR810', 'MVN699', '2020-01-03')
+GO
+INSERT INTO Seferler VALUES('IT141201', 34, 61, '06 OC 57', 'SFR493', 'SFR555', 'MVN578', '2020-01-04')
+INSERT INTO Seferler VALUES('TI142101', 61, 34, '54 OL 34', 'SFR299', 'SFR137', 'MVN503', '2020-01-04')
+INSERT INTO Seferler VALUES('IA141301', 34, 07, '34 ODA 135', 'SFR810', 'SFR969', 'MVN466', '2020-01-04')
+INSERT INTO Seferler VALUES('AI143101', 07, 34, '61 OL 683', 'SFR905', 'SFR988', 'MVN329', '2020-01-04')
+INSERT INTO Seferler VALUES('IV141401', 34, 65, '35 OTZ 601', 'SFR211', 'SFR600', 'MVN347', '2020-01-04')
+INSERT INTO Seferler VALUES('VI144101', 65, 34, '34 OAB 01', 'SFR894', 'SFR311', 'MVN311', '2020-01-04')
+GO
+INSERT INTO Seferler VALUES('IT151201', 34, 61, '58 OCV 018', 'SFR894', 'SFR988', 'MVN555', '2020-01-05')
+INSERT INTO Seferler VALUES('TI152101', 61, 34, '06 OC 57', 'SFR555', 'SFR493', 'MVN578', '2020-01-05')
+INSERT INTO Seferler VALUES('IA151301', 34, 07, '54 OL 34', 'SFR311', 'SFR954', 'MVN633', '2020-01-05')
+INSERT INTO Seferler VALUES('AI153101', 07, 34, '34 ODA 135', 'SFR810', 'SFR969', 'MVN466', '2020-01-05')
+INSERT INTO Seferler VALUES('IV151401', 34, 65, '34 OAB 01', 'SFR244', 'SFR905', 'MVN329', '2020-01-05')
+INSERT INTO Seferler VALUES('VI154101', 65, 34, '35 OTZ 601', 'SFR600', 'SFR211', 'MVN347', '2020-01-05')
+GO
+INSERT INTO Seferler VALUES('IT161201', 34, 61, '34 OTT 248', 'SFR969', 'SFR933', 'MVN699', '2020-01-06')
+INSERT INTO Seferler VALUES('TI162101', 61, 34, '58 OCV 018', 'SFR894', 'SFR988', 'MVN555', '2020-01-06')
+INSERT INTO Seferler VALUES('IA161301', 34, 07, '61 OL 683', 'SFR299', 'SFR600', 'MVN311', '2020-01-06')
+INSERT INTO Seferler VALUES('AI163101', 07, 34, '54 OL 34', 'SFR954', 'SFR311', 'MVN633', '2020-01-06')
+INSERT INTO Seferler VALUES('IV161401', 34, 65, '06 OC 57', 'SFR105', 'SFR778', 'MVN503', '2020-01-06')
+INSERT INTO Seferler VALUES('VI164101', 65, 34, '34 OAB 01', 'SFR244', 'SFR905', 'MVN329', '2020-01-06')
+INSERT INTO Seferler VALUES('IT161202', 34, 61, '34 OBV 699', 'SFR899', 'SFR931', 'MVN368', '2020-01-06')
+GO
+INSERT INTO Seferler VALUES('IT171201', 34, 61, '34 OAB 01', 'SFR555', 'SFR954', 'MVN329', '2020-01-07')
+INSERT INTO Seferler VALUES('TI172101', 61, 34, '34 OTT 248', 'SFR933', 'SFR969', 'MVN699', '2020-01-07')
+INSERT INTO Seferler VALUES('IA171301', 34, 07, '54 OL 34', 'SFR894', 'SFR493', 'MVN578', '2020-01-07')
+INSERT INTO Seferler VALUES('AI173101', 07, 34, '61 OL 683', 'SFR600', 'SFR299', 'MVN311', '2020-01-07')
+INSERT INTO Seferler VALUES('IV171401', 34, 65, '58 OCV 018', 'SFR810', 'SFR137', 'MVN555', '2020-01-07')
+INSERT INTO Seferler VALUES('VI174101', 65, 34, '06 OC 57', 'SFR778', 'SFR105', 'MVN503', '2020-01-07')
+INSERT INTO Seferler VALUES('TI172102', 61, 34, '34 OBV 699', 'SFR899', 'SFR931', 'MVN368', '2020-01-07')
+GO
+INSERT INTO Calisanlar VALUES('SFR105', 1, 'Ali', 'Yılmaz', 2012, 0, 180)
+INSERT INTO Calisanlar VALUES('SFR137', 1, 'Ahmet', 'Gümüş', 2010, 0, 190)
+INSERT INTO Calisanlar VALUES('MVN311', 2, 'Ahmet', 'Kurtuluş', 2014, 0, 110)
+INSERT INTO Calisanlar VALUES('OFS151', 3, 'Ayşe', 'Acar', 2017, 2800, 0)
+INSERT INTO Calisanlar VALUES('SFR211', 1, 'Batıkan', 'Uçar', 2016, 0, 175)
+INSERT INTO Calisanlar VALUES('OFS158', 3, 'Berrin', 'Tarkan', 2011, 3000, 0)
+INSERT INTO Calisanlar VALUES('MVN329', 2, 'Burak', 'Suna', 2018, 0, 100)
+INSERT INTO Calisanlar VALUES('MVN347', 2, 'Celil', 'Ay', 2012, 0, 120)
+INSERT INTO Calisanlar VALUES('SFR244', 1, 'Cem', 'Çırakoğlu', 2015, 0, 180)
+INSERT INTO Calisanlar VALUES('OFS268', 3, 'Deniz', 'Doğan', 2013, 2950, 0)
+INSERT INTO Calisanlar VALUES('OFS611', 3, 'Emine', 'Demirhan', 2010, 3000, 0)
+INSERT INTO Calisanlar VALUES('MVN368', 2, 'Emin', 'İlkay', 2019, 0, 100)
+INSERT INTO Calisanlar VALUES('SFR299', 1, 'Emre', 'Genç', 2014, 0, 185)
+INSERT INTO Calisanlar VALUES('SFR311', 1, 'Haluk', 'Süner', 2014, 0, 185)
+INSERT INTO Calisanlar VALUES('SFR469', 1, 'Hasan', 'Büyük', 2014, 0, 185)
+INSERT INTO Calisanlar VALUES('YNT411', 4, 'Hatice', 'Bozarslar', 2017, 5600, 0)
+INSERT INTO Calisanlar VALUES('YNT558', 4, 'Hatice', 'Özmen', 2010, 7200, 0)
+INSERT INTO Calisanlar VALUES('SFR493', 1, 'İbrahim', 'Akdoğan', 2010, 0, 195)
+INSERT INTO Calisanlar VALUES('SFR555', 1, 'İsmail', 'Uygur', 2015, 0, 180)
+INSERT INTO Calisanlar VALUES('SFR600', 1, 'Kıvanç', 'Yurt', 2015, 0, 180)
+INSERT INTO Calisanlar VALUES('SFR661', 1, 'Levent', 'Bozkurt', 2014, 0, 185)
+INSERT INTO Calisanlar VALUES('MVN466', 2, 'Mehmet', 'Şahiner', 2018, 0, 110)
+INSERT INTO Calisanlar VALUES('YNT850', 4, 'Mehtap', 'Dinçer', 2018, 4800, 0)
+INSERT INTO Calisanlar VALUES('MVN503', 2, 'Muhsin', 'Samsa', 2019, 0, 100)
+INSERT INTO Calisanlar VALUES('SFR731', 1, 'Mustafa', 'Kazancı', 2015, 0, 175)
+INSERT INTO Calisanlar VALUES('SFR778', 1, 'Necati', 'Şaşmaz', 2016, 0, 175)
+INSERT INTO Calisanlar VALUES('SFR810', 1, 'Oğuz', 'Taş', 2011, 0, 190)
+INSERT INTO Calisanlar VALUES('SFR856', 1, 'Oğuzhan', 'Ahıskalı', 2016, 0, 185)
+INSERT INTO Calisanlar VALUES('MVN555', 2, 'Oğuzkaan', 'Gözaçan', 2012, 0, 120)
+INSERT INTO Calisanlar VALUES('SFR894', 1, 'Refik', 'Eser', 2019, 0, 175)
+INSERT INTO Calisanlar VALUES('SFR899', 1, 'Resul', 'Yener', 2015, 0, 180)
+INSERT INTO Calisanlar VALUES('MVN578', 2, 'Rezzan', 'Köse', 2019, 0, 110)
+INSERT INTO Calisanlar VALUES('SFR905', 1, 'Salim', 'Özkan', 2018, 0, 180)
+INSERT INTO Calisanlar VALUES('SFR920', 1, 'Selami', 'Pekel', 2012, 0, 195)
+INSERT INTO Calisanlar VALUES('MVN633', 2, 'Süreyya', 'Çetinkor', 2017, 0, 100)
+INSERT INTO Calisanlar VALUES('MVN699', 2, 'Suat', 'Köşker', 2013, 0, 100)
+INSERT INTO Calisanlar VALUES('SFR931', 1, 'Seçgin', 'Gül', 2015, 0, 175)
+INSERT INTO Calisanlar VALUES('SFR933', 1, 'Sezgin', 'Karayiğit', 2018, 0, 175)
+INSERT INTO Calisanlar VALUES('SFR954', 1, 'Tevhit', 'Karslı', 2016, 0, 185)
+INSERT INTO Calisanlar VALUES('MVN787', 2, 'Umut Can', 'Çelik', 2016, 0, 110)
+INSERT INTO Calisanlar VALUES('SFR969', 1, 'Ümit', 'Ekiz', 2013, 0, 185)
+INSERT INTO Calisanlar VALUES('SFR988', 1, 'Volkan', 'Şengül', 2010, 0, 190)
+INSERT INTO Calisanlar VALUES('MVN890', 2, 'Zeynel', 'Alakurt', 2014, 0, 120)
+GO
+INSERT INTO CalisanTurleri VALUES(1, 'Şoför')
+INSERT INTO CalisanTurleri VALUES(2, 'Muavin')
+INSERT INTO CalisanTurleri VALUES(3, 'Ofis Çalışanı')
+INSERT INTO CalisanTurleri VALUES(4, 'Yönetici')
+
+-----------------------------------------------------------------------------------------------
+
+-- Adım 4) İstediğiniz tabloyu getirebilirsiniz.
+
+-----------------------------------------------------------------------------------------------
+
+GO
+SELECT * FROM Otobusler
+GO
+SELECT * FROM CalisilanSehirler
+GO
+SELECT * FROM Seferler
+GO
+SELECT * FROM Calisanlar
+GO
+SELECT * FROM CalisanTurleri
+
+-----------------------------------------------------------------------------------------------
+
+-- TEVHİT KARSLI - "SQL YAZILIM OGREN UYGULAMASI"
+
