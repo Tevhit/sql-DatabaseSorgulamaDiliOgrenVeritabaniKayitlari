@@ -1,9 +1,9 @@
--- Adým 1) Yeni bir Database oluþturun.
+-- Adim 1) Yeni bir Database olusturun.
 -----------------------------------------------------------------------------------------------
 CREATE DATABASE DunyadakiSirketler
 -----------------------------------------------------------------------------------------------
 
--- Adým 2) Tabloyu oluþturun.
+-- Adim 2) Tabloyu olusturun.
 
 -----------------------------------------------------------------------------------------------
 GO
@@ -21,7 +21,7 @@ CREATE TABLE Sirketler(
 
 -----------------------------------------------------------------------------------------------
 
--- Adým 3) Verileri tablolara ekleyin.
+-- Adim 3) Verileri tablolara ekleyin.
 
 -----------------------------------------------------------------------------------------------
 GO
@@ -58,11 +58,11 @@ INSERT INTO Sirketler VALUES(16, 'Red Bull', 'Yoovidhya', 'Avusturya', 11.567, 1
 
 -----------------------------------------------------------------------------------------------
 
--- Adým 4) Ýstediðiniz tabloyu getirebilirsiniz.
+-- Adim 4) Istediginiz tabloyu getirebilirsiniz.
 
 -----------------------------------------------------------------------------------------------
 GO
 SELECT * FROM Sirketler
 
 -----------------------------------------------------------------------------------------------
---TEVHÝT KARSLI - "SQL YAZILIM OGREN"
+-- Tevhit Karslý - "SQL YAZILIM OGREN"
