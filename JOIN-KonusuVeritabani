@@ -1,24 +1,28 @@
-Adım 1) Yeni bir Database oluşturun.
+-- Adım 1) Yeni bir Database oluşturun.
 -----------------------------------------------------------------------------------------------
+
 CREATE DATABASE OkulBilgiSistemi
 
 -----------------------------------------------------------------------------------------------
-Adım 2) Tabloları oluşturun.
+
+-- Adım 2) Tabloları oluşturun.
 
 -----------------------------------------------------------------------------------------------
+
+GO
 CREATE TABLE Derslikler(
 	DerslikID int,
 	DerslikAdi nvarchar(50),
 	DerslikTuru nvarchar(50),
 	Kapasite int
 )
-
+GO
 CREATE TABLE Dersler(
 	DersKodu nvarchar(50) primary key,
 	DersAdi nvarchar(50),
 	OgretmenID nvarchar(50)
 )
-
+GO
 CREATE TABLE DersZamaniVeYeri(
 	DersKodu nvarchar(50),
 	DerslikID nvarchar(50),
@@ -26,19 +30,19 @@ CREATE TABLE DersZamaniVeYeri(
 	BaslangicSaati time,
 	BitisSaati time
 )
-
+GO
 CREATE TABLE OgrencilerinAldiklariDersler(
 	OgrenciNumarasi int,
 	DersKodu nvarchar(50)
 )
-
+GO
 CREATE TABLE Ogrenciler(
 	OgrenciNumarasi int primary key,
 	OgrenciAdiSoyadi nvarchar(50),
 	Bolumu nvarchar(50),
 	DanismanOgretmenID nvarchar(50) not null
 )
-
+GO
 CREATE TABLE Ogretmenler(
 	OgretmenID nvarchar(50) primary key,
 	OgretmenAdi nvarchar(50),
@@ -50,8 +54,17 @@ CREATE TABLE Ogretmenler(
 
 -----------------------------------------------------------------------------------------------
 
-Adım 3) Verileri tablolara ekleyin.
+-- Adım 3) Verileri tablolara ekleyin.
 
+-----------------------------------------------------------------------------------------------
+
+GO
+insert into Derslikler values(1, '101', 'Sınıf', 40)
+insert into Derslikler values(2, '102', 'Sınıf', 40)
+insert into Derslikler values(3, '103', 'Sınıf', 40)
+insert into Derslikler values(4, 'LAB-1', 'Yazılım Geliştirme Labotaruvarı', 30)
+insert into Derslikler values(5, 'LAB-2', 'Yazılım Geliştirme Labotaruvarı', 30)
+GO
 insert into DersZamaniVeYeri values('MAT-121', 1, 'Pazartesi', '09:00', '09:45')
 insert into DersZamaniVeYeri values('MAT-121', 1, 'Pazartesi', '09:55', '10:40')
 insert into DersZamaniVeYeri values('BM-425', 4, 'Pazartesi', '09:00', '09:45')
@@ -66,7 +79,7 @@ insert into DersZamaniVeYeri values('ATA-151', 1, 'Pazartesi', '16:20', '17:05')
 insert into DersZamaniVeYeri values('BM-360', 4, 'Pazartesi', '13:35', '14:20')
 insert into DersZamaniVeYeri values('BM-360', 4, 'Pazartesi', '14:30', '15:15')
 insert into DersZamaniVeYeri values('BM-360', 4, 'Pazartesi', '15:25', '16:10')
-
+GO
 insert into DersZamaniVeYeri values('MAT-121', 1, 'Salı', '09:00', '09:45')
 insert into DersZamaniVeYeri values('MAT-121', 1, 'Salı', '09:55', '10:40')
 insert into DersZamaniVeYeri values('BM-235', 5, 'Salı', '09:00', '09:45')
@@ -78,7 +91,7 @@ insert into DersZamaniVeYeri values('FZK-183', 1, 'Salı', '14:30', '15:15')
 insert into DersZamaniVeYeri values('YM-343', 4, 'Salı', '13:35', '14:20')
 insert into DersZamaniVeYeri values('YM-343', 4, 'Salı', '14:30', '15:15')
 insert into DersZamaniVeYeri values('YM-343', 4, 'Salı', '15:25', '16:10')
-
+GO
 insert into DersZamaniVeYeri values('ALGO-133', 4, 'Çarşamba', '09:00', '09:45')
 insert into DersZamaniVeYeri values('ALGO-133', 4, 'Çarşamba', '09:55', '10:40')
 insert into DersZamaniVeYeri values('YM-307', 4, 'Çarşamba', '10:50', '11:35')
@@ -88,7 +101,7 @@ insert into DersZamaniVeYeri values('BM-221', 5, 'Çarşamba', '14:30', '15:15')
 insert into DersZamaniVeYeri values('BM-221', 5, 'Çarşamba', '15:25', '16:10')
 insert into DersZamaniVeYeri values('YM-307', 4, 'Çarşamba', '15:25', '16:10')
 insert into DersZamaniVeYeri values('YM-307', 4, 'Çarşamba', '16:20', '17:05')
-
+GO
 insert into DersZamaniVeYeri values('YM-237', 4, 'Perşembe', '09:00', '09:45')
 insert into DersZamaniVeYeri values('YM-237', 4, 'Perşembe', '09:55', '10:40')
 insert into DersZamaniVeYeri values('MAT-223', 1, 'Perşembe', '09:00', '09:45')
@@ -100,7 +113,7 @@ insert into DersZamaniVeYeri values('ALGO-133', 4, 'Perşembe', '13:35', '14:20'
 insert into DersZamaniVeYeri values('ALGO-133', 4, 'Perşembe', '14:30', '15:15')
 insert into DersZamaniVeYeri values('BM-302', 5, 'Perşembe', '13:35', '14:20')
 insert into DersZamaniVeYeri values('BM-302', 5, 'Perşembe', '14:30', '15:15')
-
+GO
 insert into DersZamaniVeYeri values('BM-105', 4, 'Cuma', '09:00', '09:45')
 insert into DersZamaniVeYeri values('BM-105', 4, 'Cuma', '09:55', '10:40')
 insert into DersZamaniVeYeri values('BM-105', 4, 'Cuma', '10:50', '11:35')
@@ -114,7 +127,7 @@ insert into DersZamaniVeYeri values('MAT-223', 1, 'Cuma', '13:35', '14:20')
 insert into DersZamaniVeYeri values('MAT-223', 1, 'Cuma', '14:30', '15:15')
 insert into DersZamaniVeYeri values('BM-302', 4, 'Cuma', '13:35', '14:20')
 insert into DersZamaniVeYeri values('BM-302', 4, 'Cuma', '14:30', '15:15')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534719, 'MAT-121')
 insert into OgrencilerinAldiklariDersler values(534732, 'MAT-121')
 insert into OgrencilerinAldiklariDersler values(534743, 'MAT-121')
@@ -145,7 +158,7 @@ insert into OgrencilerinAldiklariDersler values(534779, 'MAT-121')
 insert into OgrencilerinAldiklariDersler values(534745, 'MAT-121')
 insert into OgrencilerinAldiklariDersler values(534777, 'MAT-121')
 insert into OgrencilerinAldiklariDersler values(534790, 'MAT-121')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534719, 'FZK-183')
 insert into OgrencilerinAldiklariDersler values(534732, 'FZK-183')
 insert into OgrencilerinAldiklariDersler values(534743, 'FZK-183')
@@ -176,7 +189,7 @@ insert into OgrencilerinAldiklariDersler values(534765, 'FZK-183')
 insert into OgrencilerinAldiklariDersler values(534738, 'FZK-183')
 insert into OgrencilerinAldiklariDersler values(534789, 'FZK-183')
 insert into OgrencilerinAldiklariDersler values(534766, 'FZK-183')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534719, 'ALGO-133')
 insert into OgrencilerinAldiklariDersler values(534732, 'ALGO-133')
 insert into OgrencilerinAldiklariDersler values(534743, 'ALGO-133')
@@ -207,7 +220,7 @@ insert into OgrencilerinAldiklariDersler values(534785, 'ALGO-133')
 insert into OgrencilerinAldiklariDersler values(534788, 'ALGO-133')
 insert into OgrencilerinAldiklariDersler values(534765, 'ALGO-133')
 insert into OgrencilerinAldiklariDersler values(534738, 'ALGO-133')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534702, 'BM-105')
 insert into OgrencilerinAldiklariDersler values(534706, 'BM-105')
 insert into OgrencilerinAldiklariDersler values(534760, 'BM-105')
@@ -233,7 +246,7 @@ insert into OgrencilerinAldiklariDersler values(534721, 'BM-105')
 insert into OgrencilerinAldiklariDersler values(534727, 'BM-105')
 insert into OgrencilerinAldiklariDersler values(534731, 'BM-105')
 insert into OgrencilerinAldiklariDersler values(534733, 'BM-105')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534719, 'ATA-151')
 insert into OgrencilerinAldiklariDersler values(534732, 'ATA-151')
 insert into OgrencilerinAldiklariDersler values(534743, 'ATA-151')
@@ -264,7 +277,7 @@ insert into OgrencilerinAldiklariDersler values(534766, 'ATA-151')
 insert into OgrencilerinAldiklariDersler values(534721, 'ATA-151')
 insert into OgrencilerinAldiklariDersler values(534727, 'ATA-151')
 insert into OgrencilerinAldiklariDersler values(534731, 'ATA-151')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534774, 'BM-235')
 insert into OgrencilerinAldiklariDersler values(534769, 'BM-235')
 insert into OgrencilerinAldiklariDersler values(534786, 'BM-235')
@@ -295,7 +308,7 @@ insert into OgrencilerinAldiklariDersler values(534758, 'BM-235')
 insert into OgrencilerinAldiklariDersler values(534787, 'BM-235')
 insert into OgrencilerinAldiklariDersler values(534778, 'BM-235')
 insert into OgrencilerinAldiklariDersler values(534764, 'BM-235')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534719, 'YM-237')
 insert into OgrencilerinAldiklariDersler values(534732, 'YM-237')
 insert into OgrencilerinAldiklariDersler values(534743, 'YM-237')
@@ -310,7 +323,7 @@ insert into OgrencilerinAldiklariDersler values(534765, 'YM-237')
 insert into OgrencilerinAldiklariDersler values(534738, 'YM-237')
 insert into OgrencilerinAldiklariDersler values(534789, 'YM-237')
 insert into OgrencilerinAldiklariDersler values(534766, 'YM-237')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534751, 'MAT-223')
 insert into OgrencilerinAldiklariDersler values(534761, 'MAT-223')
 insert into OgrencilerinAldiklariDersler values(534741, 'MAT-223')
@@ -334,7 +347,7 @@ insert into OgrencilerinAldiklariDersler values(534733, 'MAT-223')
 insert into OgrencilerinAldiklariDersler values(534705, 'MAT-223')
 insert into OgrencilerinAldiklariDersler values(534757, 'MAT-223')
 insert into OgrencilerinAldiklariDersler values(534779, 'MAT-223')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534736, 'MAT-224')
 insert into OgrencilerinAldiklariDersler values(534722, 'MAT-224')
 insert into OgrencilerinAldiklariDersler values(534749, 'MAT-224')
@@ -355,7 +368,7 @@ insert into OgrencilerinAldiklariDersler values(534746, 'MAT-224')
 insert into OgrencilerinAldiklariDersler values(534705, 'MAT-224')
 insert into OgrencilerinAldiklariDersler values(534757, 'MAT-224')
 insert into OgrencilerinAldiklariDersler values(534779, 'MAT-224')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534774, 'YM-307')
 insert into OgrencilerinAldiklariDersler values(534769, 'YM-307')
 insert into OgrencilerinAldiklariDersler values(534786, 'YM-307')
@@ -378,7 +391,7 @@ insert into OgrencilerinAldiklariDersler values(534721, 'YM-307')
 insert into OgrencilerinAldiklariDersler values(534727, 'YM-307')
 insert into OgrencilerinAldiklariDersler values(534731, 'YM-307')
 insert into OgrencilerinAldiklariDersler values(534733, 'YM-307')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534774, 'BM-302')
 insert into OgrencilerinAldiklariDersler values(534769, 'BM-302')
 insert into OgrencilerinAldiklariDersler values(534786, 'BM-302')
@@ -407,7 +420,7 @@ insert into OgrencilerinAldiklariDersler values(534766, 'BM-302')
 insert into OgrencilerinAldiklariDersler values(534745, 'BM-302')
 insert into OgrencilerinAldiklariDersler values(534777, 'BM-302')
 insert into OgrencilerinAldiklariDersler values(534790, 'BM-302')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534751, 'BM-360')
 insert into OgrencilerinAldiklariDersler values(534761, 'BM-360')
 insert into OgrencilerinAldiklariDersler values(534741, 'BM-360')
@@ -438,7 +451,7 @@ insert into OgrencilerinAldiklariDersler values(534733, 'BM-360')
 insert into OgrencilerinAldiklariDersler values(534705, 'BM-360')
 insert into OgrencilerinAldiklariDersler values(534757, 'BM-360')
 insert into OgrencilerinAldiklariDersler values(534779, 'BM-360')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534719, 'BM-221')
 insert into OgrencilerinAldiklariDersler values(534732, 'BM-221')
 insert into OgrencilerinAldiklariDersler values(534743, 'BM-221')
@@ -466,7 +479,7 @@ insert into OgrencilerinAldiklariDersler values(534707, 'BM-221')
 insert into OgrencilerinAldiklariDersler values(534709, 'BM-221')
 insert into OgrencilerinAldiklariDersler values(534711, 'BM-221')
 insert into OgrencilerinAldiklariDersler values(534726, 'BM-221')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534751, 'BM-425')
 insert into OgrencilerinAldiklariDersler values(534761, 'BM-425')
 insert into OgrencilerinAldiklariDersler values(534741, 'BM-425')
@@ -496,7 +509,7 @@ insert into OgrencilerinAldiklariDersler values(534721, 'BM-425')
 insert into OgrencilerinAldiklariDersler values(534727, 'BM-425')
 insert into OgrencilerinAldiklariDersler values(534731, 'BM-425')
 insert into OgrencilerinAldiklariDersler values(534733, 'BM-425')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534774, 'BM-432')
 insert into OgrencilerinAldiklariDersler values(534769, 'BM-432')
 insert into OgrencilerinAldiklariDersler values(534786, 'BM-432')
@@ -522,7 +535,7 @@ insert into OgrencilerinAldiklariDersler values(534781, 'BM-432')
 insert into OgrencilerinAldiklariDersler values(534745, 'BM-432')
 insert into OgrencilerinAldiklariDersler values(534777, 'BM-432')
 insert into OgrencilerinAldiklariDersler values(534790, 'BM-432')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534774, 'YM-343')
 insert into OgrencilerinAldiklariDersler values(534769, 'YM-343')
 insert into OgrencilerinAldiklariDersler values(534786, 'YM-343')
@@ -550,7 +563,7 @@ insert into OgrencilerinAldiklariDersler values(534733, 'YM-343')
 insert into OgrencilerinAldiklariDersler values(534705, 'YM-343')
 insert into OgrencilerinAldiklariDersler values(534757, 'YM-343')
 insert into OgrencilerinAldiklariDersler values(534779, 'YM-343')
-
+GO
 insert into OgrencilerinAldiklariDersler values(534774, 'YM-207')
 insert into OgrencilerinAldiklariDersler values(534769, 'YM-207')
 insert into OgrencilerinAldiklariDersler values(534786, 'YM-207')
@@ -572,7 +585,7 @@ insert into OgrencilerinAldiklariDersler values(534766, 'YM-207')
 insert into OgrencilerinAldiklariDersler values(534745, 'YM-207')
 insert into OgrencilerinAldiklariDersler values(534777, 'YM-207')
 insert into OgrencilerinAldiklariDersler values(534790, 'YM-207')
-
+GO
 insert into Ogrenciler values(534701, 'ADNAN ÇELİK', 'Yazılım Mühendisliği', 'OGRT-1252')
 insert into Ogrenciler values(534702, 'AHMET GÜMÜŞ', 'Bilgisayar Mühendisliği', 'OGRT-5131')
 insert into Ogrenciler values(534703, 'AHMET KURTULUŞ', 'Yazılım Mühendisliği', 'OGRT-1252')
@@ -649,7 +662,7 @@ insert into Ogrenciler values(534787, 'VEYSEL ERGİNTÜRK', 'Bilgisayar Mühendi
 insert into Ogrenciler values(534788, 'ZÜBEYDE ALKURT', 'Bilgisayar Mühendisliği', 'OGRT-1252')
 insert into Ogrenciler values(534789, 'ZÜHAL GÜLSÜM AVCI', 'Yazılım Mühendisliği', 'OGRT-4681')
 insert into Ogrenciler values(534790, 'ZEHRA BETÜL KABACAOĞLU', 'Yazılım Mühendisliği', 'OGRT-5131')
-
+GO
 insert into Ogretmenler values('OGRT-1252', 'Abdulkadir', 'Kılıç', 'Profesör', 'Yazılım Mühendisliği')
 insert into Ogretmenler values('OGRT-5131', 'Burcu', 'Kurt', 'Yardımcı Doçent', 'Bilgisayar Mühendisliği')
 insert into Ogretmenler values('OGRT-6722', 'Cihan', 'Yıldırım', 'Asistan Profesör', 'Fizik')
@@ -657,3 +670,23 @@ insert into Ogretmenler values('OGRT-4681', 'Dilek', 'Gül', 'Doçent', 'Yazıl�
 insert into Ogretmenler values('OGRT-3571', 'Ferda', 'Ekici', 'Yardımcı Doçent', 'Yazılım Mühendisliği')
 insert into Ogretmenler values('OGRT-8723', 'Gökhan', 'Bulut', 'Yardımcı Doçent', 'Matematik')
 insert into Ogretmenler values('OGRT-6925', 'Tevhit', 'Karsli', 'Profesör', 'Tarih')
+
+-----------------------------------------------------------------------------------------------
+
+-- Adım 4) İstediğiniz tabloyu getirebilirsiniz.
+
+-----------------------------------------------------------------------------------------------
+
+GO
+SELECT * FROM Ogretmenler 
+SELECT * FROM Ogrenciler 
+SELECT * FROM Derslikler
+SELECT * FROM Dersler
+SELECT * FROM DersZamaniVeYeri
+SELECT * FROM OgrencilerinAldiklariDersler
+
+-----------------------------------------------------------------------------------------------
+
+-- TEVHİT KARSLI - "SQL YAZILIM OGREN UYGULAMASI"
+
+
