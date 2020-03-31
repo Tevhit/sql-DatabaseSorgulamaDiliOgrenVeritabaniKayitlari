@@ -1,22 +1,27 @@
-Adım 1) Yeni bir Database oluşturun.
------------------------------------------------------------------------------------------------
-CREATE DATABASE myDatabase
------------------------------------------------------------------------------------------------
-
-Adım 2) Tabloları oluşturun.
+-- Adım 1) Yeni bir Database oluşturun.
 
 -----------------------------------------------------------------------------------------------
+
+CREATE DATABASE AlisverisSitesi
+
+-----------------------------------------------------------------------------------------------
+
+-- Adım 2) Tabloları oluşturun.
+
+-----------------------------------------------------------------------------------------------
+
+GO
 CREATE TABLE KATEGORILER (
 	KategoriID int,
 	KategoriAdı nvarchar(50)
 )
-
+GO
 CREATE TABLE NAKLIYATCILAR (
 	NakliyatciID int,
 	SirketAdi nvarchar(50),
 	TelefonNumarasi nvarchar(50)
 )
-
+GO
 CREATE TABLE CALISANLAR (
 	CalisanID int,
 	Adi nvarchar(50),
@@ -31,7 +36,7 @@ CREATE TABLE CALISANLAR (
 	Fotografi nvarchar(50),
 	Muduru int
 )
-
+GO
 CREATE TABLE URUNLER (
 	UrunID int primary key,
 	UrunAdi nvarchar(100),
@@ -42,7 +47,7 @@ CREATE TABLE URUNLER (
 	StokDurumu int,
 	MusteriMemnuniyetOrani float
 )
-
+GO
 CREATE TABLE SATICILAR (
 	SaticiID int,
 	SirketAdi nvarchar(50),
@@ -50,9 +55,9 @@ CREATE TABLE SATICILAR (
 	IletisimSorumlusuBilgisi nvarchar(50),
 	IletisimTelefon nvarchar(50),
 	Adres nvarchar(100),
-	Sehir nvarchar(50),
+	Sehir nvarchar(50)
 )
-
+GO
 CREATE TABLE MUSTERILER (
 	MusteriID nvarchar(50) primary key,
 	MusteriAdi nvarchar(50),
@@ -62,7 +67,7 @@ CREATE TABLE MUSTERILER (
 	Yas int,
 	IletisimBilgileri nvarchar(50)
 )
-
+GO
 CREATE TABLE SIPARISLER (
 	SiparisID int primary key,
 	MusteriID nvarchar(50),
@@ -72,7 +77,7 @@ CREATE TABLE SIPARISLER (
 	NakliyatciFirma int,
 	NakliyatUcreti float
 )
-
+GO
 CREATE TABLE [SIPARIS DETAYLARI] (
 	SiparisID int,
 	UrunID int,
@@ -83,8 +88,10 @@ CREATE TABLE [SIPARIS DETAYLARI] (
 
 -----------------------------------------------------------------------------------------------
 
-Adım 3) Verileri tablolara ekleyin.
+-- Adım 3) Verileri tablolara ekleyin.
+-----------------------------------------------------------------------------------------------
 
+GO
 insert into KATEGORILER values(1, 'Bebek ve Oyuncak')
 insert into KATEGORILER values(2, 'Bilgisayar ve Yazıcılar')
 insert into KATEGORILER values(3, 'Elektronik')
@@ -97,11 +104,11 @@ insert into KATEGORILER values(9, 'Telefon')
 insert into KATEGORILER values(10, 'Video Oyunu ve Konsol')
 insert into KATEGORILER values(11, 'Yapı Market')
 insert into KATEGORILER values(12, 'Kırtasiye Ürünleri')
-
+GO
 insert into NAKLIYATCILAR values(1, 'Aras Kargo', '444 25 52')
 insert into NAKLIYATCILAR values(2, 'Yurtiçi Kargo', '444 99 99')
 insert into NAKLIYATCILAR values(3, 'MNG KARGO.', '444 06 06')
-
+GO
 insert into CALISANLAR values(1, 'Ali', 'Öztürk', 'Satış Temsilcisi', 'Erkek', '1988-12-08', '2012-05-01', 4500, 'Lisans', 'Kayseri', 'CalisanID1.bmp', 2)
 insert into CALISANLAR values(2, 'Ayşe', 'Yılmaz', 'Başkan Vekili', 'Kadın', '1972-02-19', '2012-08-14', 8500, 'Doçent', 'Erzurum', 'CalisanID2.bmp', NULL)
 insert into CALISANLAR values(3, 'Fatih', 'Doğan', 'Satış Temsilcisi', 'Erkek', '1983-08-30', '2012-04-01', 3575, 'Ön Lisans', 'Çanakkale', 'CalisanID3.bmp', 2)
@@ -112,7 +119,7 @@ insert into CALISANLAR values(7, 'Zeynep', 'Pektaş', 'Satış Temsilcisi', 'Kad
 insert into CALISANLAR values(8, 'Sevgi', 'Akıncı', 'İç Satış Koordinatörü', 'Kadın', '1978-01-09', '2014-03-05', 5100, 'Yüksek Lisans', 'Van', 'CalisanID8.bmp', 2)
 insert into CALISANLAR values(9, 'Ezgi', 'Özdemir', 'Satış Temsilcisi', 'Kadın', '1989-07-02', '2014-11-15', 4450, 'Lisans', 'Bayburt', 'CalisanID9.bmp', 5)
 insert into CALISANLAR values(10, 'Hilal', 'Balcı', 'Danışman', 'Kadın', '1989-12-30', '2014-10-07', 6450, 'Doçent', 'Kars', NULL, 2)
-
+GO
 insert into URUNLER values(1, 'PUMA VIKKY RIBBON Bold Kadın Ayakkabı', 1, 7, 'Bir çift ayakkabı, ayakkabı kutusunda', 180, 314, 4.69)
 insert into URUNLER values(2, 'Koton Erkek Çorap', 2, 7, ' Siyah, Tek Ebat (Üretici ölçüsü: T)', 19.99, 213, 4.91)
 insert into URUNLER values(3, 'Koton Kadın Pijama Takımı PIJAMA SET', 2, 7, 'Uzun alt-Pijama takımı', 69.99, 122, 3.95)
@@ -191,7 +198,7 @@ insert into URUNLER values(75, 'PS4 DISNEY INFINITY 2.0 MARVEL SUPER HEROES', 28
 insert into URUNLER values(76, 'PS3 DISNEY INFINITY 3.0 STAR WARS STARTER PACK', 28, 10, 'Bedava kargo', 129.00, 712, 4.12)
 insert into URUNLER values(77, 'Microsoft Xbox One S 1TB Oyun Konsolu FIFA2019', 29, 10, '1TB kapasite, kablolu-kablosuz bağlantı, Bluetooth', 2599.00, 478, 4.10)
 insert into URUNLER values(78, 'Microsoft Xbox One Branded WL Oyun Konsolu Kırmızı', 29, 10, 'Xbox one ile uyumlu kablosuz kumanda', 398.60, 841, 4.75)
-
+GO
 insert into SATICILAR values(1, 'Puma', 'Aslı Yıldırım', 'Satış Temsilcisi', '(0212) 999 10 20', 'Harmanbirinci Sok. Nida Kule Levent No:7 D:9 Şişli', 'İstanbul')
 insert into SATICILAR values(2, 'Koton', 'Ufuk Ak', 'Satış Temsilcisi', '(0212) 331 33 00', 'Ayazağa Mah Çelik İş Merkezi, Hadım Koruyolu Cd. D:3, Sarıyer', 'İstanbul')
 insert into SATICILAR values(3, 'U.S. POLO ASSN.', 'Serhat Aytaç', 'Depo Sorumlusu', '444 60 44', 'Eski Londra Asfaltı NO:92 Büyükçekmece', 'İstanbul')
@@ -221,7 +228,7 @@ insert into SATICILAR values(26, 'Hasbro Gaming', 'Erdem Öz', 'Satış Temsilci
 insert into SATICILAR values(27, 'Volkan Yalçıntoklu', 'Volkan Yalçıntoklu', 'Yazar', NULL, NULL, NULL)
 insert into SATICILAR values(28, 'DISNEY', 'Recep Kılıç', 'Müşteri Hizmetleri', '0212 384 16 00', 'Etiler Mah. Tanburi Ali Efendi Sok. 13 Beşiktaş', 'İstanbul')
 insert into SATICILAR values(29, 'Microsoft', 'Büşra Sarı', 'Müşteri Hizmetleri', '(0212) 370 55 55', 'Nisbetiye, Aydın Sokağı, Beşiktaş', 'İstanbul')
-
+GO
 insert into MUSTERILER Values('TVHTKRSL', 'TEVHİT KARSLI', 'Bayburt', 'tevhitkarsli', 'tevo6969', 22, 'TVHTKRSL_Iletisim.txt')
 insert into MUSTERILER Values('SNAUZN', 'SUNA UZUN', 'Istanbul', 'senauzun', 'sena123', 20, 'SNAUZN_Iletisim.txt')
 insert into MUSTERILER Values('ARZDMRL', 'ARZU DEMİREL', 'Van', 'arzudemirel', '456218', 30, 'ARZDMRL_Iletisim.txt')
@@ -313,7 +320,7 @@ insert into MUSTERILER Values('STKSKR', 'SUAT KÖŞKER', 'Konya', 'suatkosker', 
 insert into MUSTERILER Values('ADNCLK', 'ADNAN ÇELİK', 'Istanbul', 'adnancelik', 'karakartal34', 32, 'ADNCLK_Iletisim.txt')
 insert into MUSTERILER Values('BRNTRKN', 'BERRİN TARKAN', 'Erzincan', 'berrintarkan', 'berrin0000', 25, 'BRNTRKN_Iletisim.txt')
 insert into MUSTERILER Values('NSLHNSTRGL', 'NESLİHAN ŞATIROĞLU', 'Bilecik', 'neslihansatiroglu', 'nesli34', 34, 'NSLHNSTRGL_Iletisim.txt')
-
+GO
 insert into SIPARISLER values(10248, 'ZBYDAKRT', 5, '2006-07-04', '2006-07-16', 3, 37.64)
 insert into SIPARISLER values(10249, 'SNKRGZ', 6, '2006-07-05', '2006-07-10', 1, 16.89)
 insert into SIPARISLER values(10250, 'HSNYLMZ', 4, '2006-07-08', '2006-07-12', 2, 8.25)
@@ -1144,7 +1151,7 @@ insert into SIPARISLER values(11074, 'SLMPKL', 7, '2008-05-06', '2008-05-08', 2,
 insert into SIPARISLER values(11075, 'SLHRKN', 8, '2008-05-06', '2008-05-08', 2, 26.51)
 insert into SIPARISLER values(11076, 'ATKNOTRK', 4, '2008-05-06', '2008-05-08', 2, 33.58)
 insert into SIPARISLER values(11077, 'RFKESR', 1, '2008-05-06', '2008-05-08', 2, 15)
-
+GO
 insert into [SIPARIS DETAYLARI] values(10248, 11, 2065.92, 12, 0)
 insert into [SIPARIS DETAYLARI] values(10248, 42, 38.72, 10, 0)
 insert into [SIPARIS DETAYLARI] values(10248, 72, 125.87, 5, 0)
@@ -3301,12 +3308,13 @@ insert into [SIPARIS DETAYLARI] values(11077, 73, 6, 2, 0.01)
 insert into [SIPARIS DETAYLARI] values(11077, 75, 99, 4, 0)
 insert into [SIPARIS DETAYLARI] values(11077, 77, 2599, 2, 0)
 
+-----------------------------------------------------------------------------------------------
+
+-- Adım 4) İstediğiniz tabloyu getirebilirsiniz.
 
 -----------------------------------------------------------------------------------------------
 
-Adım 4) İstediğiniz tabloyu getirebilirsiniz.
-
-
+GO
 SELECT * FROM CALISANLAR
 SELECT * FROM KATEGORILER
 SELECT * FROM MUSTERILER
@@ -3317,4 +3325,5 @@ SELECT * FROM SIPARISLER
 SELECT * FROM URUNLER
 
 -----------------------------------------------------------------------------------------------
-TEVHİT KARSLI - "SQL YAZILIM OGREN"
+-- TEVHİT KARSLI - "SQL YAZILIM OGREN"
+
